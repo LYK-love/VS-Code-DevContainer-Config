@@ -1,6 +1,6 @@
 # For more CUDA-supported base images, refer to https://hub.docker.com/r/nvidia/cuda
 # For tag list, see https://hub.docker.com/r/nvidia/cuda/tags
-FROM lyklove/ml:1.0
+FROM nvidia/cuda:12.4.1-cudnn-devel-ubuntu22.04
 
 # This value is set to avoid any prompts hanging the build process during package installation.
 ARG DEBIAN_FRONTEND=noninteractive

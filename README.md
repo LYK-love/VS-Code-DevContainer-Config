@@ -3,7 +3,7 @@ That is my VS Code DevContainer configuration with NVIDIA GPU Support and common
 
 This work is heavily inspired by [the repo](https://github.com/alankrantas/cuda-cudnn-gpu-devcontainer) of Alan Wang.
 
-You can also refer to my [blog post]() for some explanation.
+You can also refer to [my blog post](https://lyk-love.cn/2024/04/26/vs-code-dev-container/) for some explanation.
 
 
 ## Prerequisites
@@ -41,11 +41,13 @@ The system configuration of the image is in the `Dockerfile`, the base image  us
 # Custumization
 If you want to change the content of the image,
 1. Modify the `Dockerfile`.
-2. Rebuild the image. You need to comment the 
+2. Rebuild the image. You need to comment this line 
   ```json
+  "image": "lyklove/ml:1.0", 
   ```
   and replace it with:
   ```json
+  // "image": "lyklove/ml:1.0", 
   "build": { "dockerfile": "Dockerfile" },
   ```
 
