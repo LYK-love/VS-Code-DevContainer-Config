@@ -13,11 +13,18 @@ You can also refer to [my blog post](https://lyk-love.cn/2024/04/26/vs-code-dev-
 - VS Code with DevContainer extension installed
 
 ## Start the DevContainer
-- Clone this repo.
-- In VS Code press `Ctrl + Shift + P` to bring up the Command Palette. 
-- Enter and find `Dev Containers: Reopen in Container`. 
-- VS Code will starts to download the CUDA image, run the script and install everything, and finish opening the directory in DevContainer.
-- The DevContainer would then run `nvidia-smi` to show what GPU can be seen by the container. Be noted that this works even without setting up cuDNN or any environment variables.
+
+```sh
+cd <your porject>
+git clone git@github.com:LYK-love/VS-Code-DevContainer-Config.github
+mv VS-Code-DevContainer-Config/.devcontainer ./
+rm -r VS-Code-DevContainer-Config # delete this repo 
+```
+After that, in VS Code:
+1. press `Ctrl + Shift + P` to bring up the Command Palette. 
+2. Enter and find `Dev Containers: Reopen in Container`. 
+3. VS Code will starts to download the CUDA image, run the script and install everything, and finish opening the directory in DevContainer.
+4. The DevContainer would then run `nvidia-smi` to show what GPU can be seen by the container.
 
 You can do more sanity checks like:
 ```sh
