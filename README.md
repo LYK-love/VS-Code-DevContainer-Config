@@ -58,3 +58,10 @@ If you want to change the content of the image,
   "build": { "dockerfile": "Dockerfile" },
   ```
 
+Build and push the image (take my image as an example, so the image name is `ml` and tag is `1.0`):
+```sh
+docker build -t ml:1.0 ./.devcontainer
+docker login
+docker image tag ml:1.0 lyklove/ml:1.0
+docker image push lyklove/ml:1.0 
+```

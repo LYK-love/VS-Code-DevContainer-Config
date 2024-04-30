@@ -49,6 +49,11 @@ RUN pip3 install -U "jax[cuda12_pip]" -f https://storage.googleapis.com/jax-rele
     flax \
     optax
 
+RUN pip3 install \
+    opencv-python==4.9.0.80 \
+    seaborn==0.13.2 \
+    tqdm==4.66.2
+
 
 # Used by OpenMP, a library for parallel programming. This variable sets the number of threads that OpenMP will use for parallel regions (if not otherwise specified in the code). Setting it to 1 restricts OpenMP to use only one thread, 
 ENV OMP_NUM_THREADS 1
@@ -60,5 +65,9 @@ ENV LANG "C.UTF-8"
 # Set the directory where Numba, a just-in-time compiler for Python that uses the LLVM compiler infrastructure, caches its compiled function objects.
 ENV NUMBA_CACHE_DIR=/tmp
 
-# Used by the XLA compiler (Accelerated Linear Algebra), which is often used in machine learning frameworks like TensorFlow. Setting it to 0.8 limits the fraction of GPU memory XLA should pre-allocate for its operations to 80% of the available GPU memory. 
-ENV XLA_PYTHON_CLIENT_MEM_FRACTION 0.8
+# Disable vram pre-allocation of the XLA compiler (Accelerated Linear Algebra), which is often used in machine learning frameworks like TensorFlow and Jax.
+# Please refer to: https://jax.readthedocs.io/en/latest/gpu_memory_allocation.html
+ENV XLA_PYTHON_CLIENT_PREALLOCATE=false
+
+# Setting it to 0.8 limits the fraction of GPU memory XLA should pre-allocate for its operations to 80% of the available GPU memory. 
+# ENV XLA_PYTHON_CLIENT_MEM_FRACTION 0.8
