@@ -9,7 +9,7 @@ You can also refer to [my blog post](https://lyk-love.cn/2024/04/26/vs-code-dev-
 ## Prerequisites
 - Docker engine (and setup .wslconfig to use more cores and memory than default)
 - NVIDIA driver for the graphic card
-- NVIDIA Container Toolkit (which is already included in Windows’ Docker Desktop; Linux users have to install it)
+- [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) (which is already included in Windows’ Docker Desktop; Linux users have to install it)
 - VS Code with DevContainer extension installed
 
 ## Start the DevContainer
@@ -23,7 +23,7 @@ rm -r VS-Code-DevContainer-Config # delete this repo
 After that, in VS Code:
 1. press `Ctrl + Shift + P` to bring up the Command Palette. 
 2. Enter and find `Dev Containers: Reopen in Container`. 
-3. VS Code will starts to download the CUDA image, run the script and install everything, and finish opening the directory in DevContainer.
+3. VS Code will start downloading the docker image, run the script and install everything, and finish opening the directory in DevContainer.
 4. The DevContainer would then run `nvidia-smi` to show what GPU can be seen by the container.
 
 You can do more sanity checks like:
