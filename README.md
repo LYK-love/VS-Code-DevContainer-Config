@@ -1,5 +1,5 @@
 # Dev Container NVIDIA based
-That is my VS Code DevContainer configuration with NVIDIA GPU Support and common libraries, such as PyTorch and Jax, installed.
+That is my VS Code DevContainer configuration with NVIDIA GPU Support and common libraries, such as PyTorch (CPU) and Jax (CUDA), installed.
 
 This work is heavily inspired by [the repo](https://github.com/alankrantas/cuda-cudnn-gpu-devcontainer) of Alan Wang.
 
@@ -36,9 +36,9 @@ nvcc -V
 nvidia-smi
 ```
 # Details
-The `./.devcontainer/devcontainer.json` is the config file, it leverages the docker image `s`, whose `Dockerfile` is also provided in `./.devcontainer`.
+The `./.devcontainer/devcontainer.json` is the config file, it leverages the docker image `lyklove/ml:1.0`, which is built from `./.devcontainer/Dockerfile`.
 
-The system configuration of the image is in the `Dockerfile`, the base image  used is `nvidia/cuda:12.4.1-cudnn-devel-ubuntu22.04`, which means:
+The system configuration of the image is showed in the `Dockerfile`, the base image used is `nvidia/cuda:12.4.1-cudnn-devel-ubuntu22.04`, which means:
 * OS: Ubuntu22.04
 * ISA: x86_64
 * CUDA version: 12.4.1

@@ -33,34 +33,36 @@ ENV CONDA_DEFAULT_ENV=ml
 ENV CONDA_PREFIX=$CNDA/miniconda/envs/$CONDA_DEFAULT_ENV
 ENV PATH=$CONDA_PREFIX/bin:$PATH
 RUN $CNDA/miniconda/bin/conda clean -ya
-# Create conda environment
-RUN pip3 install --upgrade setuptools pip
-RUN pip3 install \
-    torch \
-    torchvision \ 
-    torchaudio \
-    jupyter==1.0.0 \
-    numpy \
-    scikit-learn \
-    matplotlib \
-    regex
 
-RUN pip3 install -U "jax[cuda12_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html \
+
+# Install dependencies for the conda env
+RUN pip3 install --upgrade setuptools pip
+
+# Jax CUDA version
+RUN pip3 install --upgrade "jax[cuda12]" \
     flax \
     optax
+
+# PyTorch CPU version
+RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 
 RUN pip3 install \
     opencv-python==4.9.0.80 \
     seaborn==0.13.2 \
     tqdm==4.66.2
 
+RUN pip3 install numpy \
+    jupyter==1.0.0 \
+    scikit-learn \
+    matplotlib \
+    regex
 
 # Used by OpenMP, a library for parallel programming. This variable sets the number of threads that OpenMP will use for parallel regions (if not otherwise specified in the code). Setting it to 1 restricts OpenMP to use only one thread, 
-ENV OMP_NUM_THREADS 1
+ENV OMP_NUM_THREADS=1
 
 # Force the Python interpreter to run in unbuffered mode. Normally, Python buffers output of its programs (storing it in memory until the buffer is full), which can delay the output from appearing on the terminal or in logs. When unbuffered, the output is written directly to the terminal or file, which is particularly useful for logging in real time and for applications where immediate output is needed, such as in Docker containers where logs are monitored.
-ENV PYTHONUNBUFFERED 1
-ENV LANG "C.UTF-8"
+ENV PYTHONUNBUFFERED=1
+ENV LANG="C.UTF-8"
 
 # Set the directory where Numba, a just-in-time compiler for Python that uses the LLVM compiler infrastructure, caches its compiled function objects.
 ENV NUMBA_CACHE_DIR=/tmp
