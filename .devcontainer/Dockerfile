@@ -38,13 +38,15 @@ RUN $CNDA/miniconda/bin/conda clean -ya
 # Install dependencies for the conda env
 RUN pip3 install --upgrade setuptools pip
 
-# Jax CUDA version
-RUN pip3 install --upgrade "jax[cuda12]" \
-    flax \
-    optax
 
-# PyTorch CPU version
-RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+# Jax and PyTorch are not installed by default.
+# # Jax CUDA version
+# RUN pip3 install --upgrade "jax[cuda12]" \
+#     flax \
+#     optax
+
+# # PyTorch CPU version
+# RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 
 RUN pip3 install \
     opencv-python==4.9.0.80 \

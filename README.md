@@ -1,5 +1,6 @@
 # Dev Container NVIDIA based
-That is my VS Code DevContainer configuration with NVIDIA GPU Support and common libraries, such as PyTorch (CPU) and Jax (CUDA), installed.
+That is my VS Code DevContainer configuration with NVIDIA GPU Support and common libraries, such as `matplotlib` and `scikit`, installed.
+As PyTorch and Jax are not installed by default, you can install mannually.
 
 This work is heavily inspired by [the repo](https://github.com/alankrantas/cuda-cudnn-gpu-devcontainer) of Alan Wang.
 
@@ -28,9 +29,6 @@ After that, in VS Code:
 
 You can do more sanity checks like:
 ```sh
-# Check if cuDNN is installed correctly. This can be done by checking the jax code:
-python -c "import jax; m = jax.numpy.array([1,]); m@m"
-
 # Check nvcc and nvidia-smi
 nvcc -V
 nvidia-smi
