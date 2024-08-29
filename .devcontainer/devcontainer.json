@@ -9,6 +9,12 @@
   "runArgs": [
     "--gpus=all"
   ],
+
+  // Change this for you need.
+  // "mounts": [
+  //   "source=/storage/,target=${containerWorkspaceFolder}/storage,type=bind,consistency=cached"
+  // ],
+
   "remoteEnv": {
     "PATH": "${containerEnv:PATH}:/usr/local/cuda/bin",
     "LD_LIBRARY_PATH": "$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64",
